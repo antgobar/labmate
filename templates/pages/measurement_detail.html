@@ -1,0 +1,8 @@
+{% if request.headers.get('HX-Request') %}
+{% include 'partials/measurements/detail.html' %}
+{% else %}
+{% extends 'index.html' %}
+{% block content %}
+{% include 'partials/measurements/detail.html' %}
+{% endblock %}
+{% endif %}

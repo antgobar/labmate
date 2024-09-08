@@ -1,0 +1,45 @@
+<div id="experiment-details-page">
+    <h2>Experiment details</h2>
+    <div class="grid">
+        <article>
+            <div id="experiment-details">
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ experiment.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Title</th>
+                        <td>{{ experiment.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lab Samples</th>
+                        <td>{{ experiment.lab_samples | length }}</td>
+                    </tr>
+                    <tr>
+                        <th>Created</th>
+                        <td>{{ experiment.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    </tr>
+                </table>
+                <div class="grid">
+                    {% include 'partials/experiments/edit_dialog.html' %}
+                    {% include 'partials/experiments/link_samples_dialog.html' %}
+                    {% include 'partials/experiments/unlink_samples_dialog.html' %}
+                </div>
+            </div>
+        </article>
+        <article>
+            <h4>Description</h4>
+            <p>{{ experiment.description }}</p>
+        </article>
+    </div>
+    <h4>Linked lab samples</h4>
+    {% if experiment.lab_samples | length > 0 %}
+    {% with %}
+    {% set samples = experiment.lab_samples %}
+    {% include 'partials/samples/table.html' %}
+    {% endwith %}
+    {% else %}
+    <p>No lab samples linked to this experiment</p>
+    {% endif %}
+</div>

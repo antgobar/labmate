@@ -1,0 +1,30 @@
+<div hx-boost="true">
+    {% if user %}
+    <li>
+        <a href="/logout" hx-boost="false">
+            Log out
+            <span>
+                <img src="/static/svg/log-out.svg" width="25px">
+            </span>
+        </a>
+    </li>
+    {% else %}
+    <li>
+        <a href="/register" hx-target="main" hx-replace-url="/register">
+            <button>
+                <strong>
+                    Register <span><img src="/static/svg/register.svg" width="25px"></span>
+                </strong>
+            </button>
+        </a>
+    </li>
+    <li>
+        <a href="/login" hx-target="main" hx-replace-url="/login">
+            Log in
+            <span>
+                <img src="/static/svg/log-in.svg" width="25px">
+            </span>
+        </a>
+    </li>
+    {% endif %}
+</div>

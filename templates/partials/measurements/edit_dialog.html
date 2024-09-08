@@ -1,0 +1,17 @@
+<dialog id="edit-measurement-dialog">
+    <article>
+        <header>
+            <form method="dialog">
+                <button aria-label="Close" rel="prev"></button>
+            </form>
+            <strong>Edit Measurement</strong>
+        </header>
+        <form>
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" value="{{ measurement.name }}" required>
+            <input type="submit" hx-put="/measurements/{{ measurement.id }}/" hx-target="main" value="Update"
+                style="border: none;" class="pico-background-green-500">
+        </form>
+    </article>
+</dialog>
+<button onclick="document.getElementById('edit-measurement-dialog').showModal()">Edit Measurement</button>

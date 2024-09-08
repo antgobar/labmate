@@ -1,0 +1,59 @@
+{% if experiment %}
+<tr id="experiment-row-{{ experiment.id }}">
+    <td>{{ experiment.id }}</td>
+    <td class="wrap-column">{{ experiment.name }}</td>
+    <td>
+        <small>{{ experiment.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+    </td>
+    <td>{{ experiment.lab_samples | length }}</td>
+    <td>
+        <div class="button-container">
+            <button hx-get="/experiments/{{ experiment.id }}" hx-target="main"
+                hx-replace-url="/experiments/{{ experiment.id }}" hx-push-url="true">
+                <small>View</small>
+            </button>
+            {% if linkable %}
+            {% if is_linked %}
+            <button class="pico-background-green-450" hx-target="main"
+                hx-post="/experiments/{{ experiment.id }}/link/?entity_type=sample&entity_identifier={{ sample_id }}">
+                <small>Link</small>
+            </button>
+            {% else %}
+            <button class="pico-background-red-450" hx-swap="delete" hx-target="#experiment-row-{{ experiment.id }}"
+                hx-post="/experiments/{{ experiment.id }}/unlink/?entity_type=sample&entity_identifier={{ sample_id }}">
+                <small>Unlink</small>
+            </button>
+            {% endif%}
+            {% else %}
+            {% if archived %}
+            <button class="pico-background-green-450" hx-post="/experiments/{{ experiment.id }}/unarchive/"
+                hx-target="#experiment-row-{{ experiment.id }}" hx-swap="delete">
+                <small>Unarchive</small>
+            </button>
+            <button class="pico-background-red-600" hx-delete="/experiments/{{ experiment.id }}"
+                hx-target="#experiment-row-{{ experiment.id }}" hx-swap="delete" data-tooltip="Delete">
+                <small>Delete</small>
+            </button>
+            {% else %}
+            <button class="pico-background-orange-450" hx-post="/experiments/{{ experiment.id }}/archive/"
+                hx-target="#experiment-row-{{ experiment.id }}" hx-swap="delete">
+                <small>Archive</small>
+            </button>
+            {% endif %}
+            {% endif %}
+        </div>
+    </td>
+</tr>
+{% endif %}
+
+{% if request.headers.get('HX-Request') %}
+{% if experiment %}
+<article style="margin: 0;" id="experiment-added-notification" class="pico-background-jade-350" hx-swap-oob="true">
+    Experiment {{ experiment.name }} added at {{ experiment.created_at.strftime('%Y-%m-%d %H:%M:%S') }}
+</article>
+{% else %}
+<article style="margin: 0;" id="experiment-added-notification" class="pico-background-red-350" hx-swap-oob="true">
+    You must fill in at least one field
+</article>
+{% endif %}
+{% endif %}

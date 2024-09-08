@@ -1,0 +1,20 @@
+<div id="upload-form-section">
+    <form id='upload-form' hx-encoding='multipart/form-data' hx-post="/samples/upload/"
+        hx-target="#upload-form-section">
+        <input type='file' name='file' required>
+        <button>
+            Upload
+            <span>
+                <img src="/static/svg/upload.svg" width="25px">
+            </span>
+        </button>
+    </form>
+    <br>
+    <progress id='progress' value='0' max='100'></progress>
+    <div id="upload_response"></div>
+    <script>
+        htmx.on('#upload-form', 'htmx:xhr:progress', function (evt) {
+            htmx.find('#progress').setAttribute('value', evt.detail.loaded / evt.detail.total * 100)
+        });
+    </script>
+</div>

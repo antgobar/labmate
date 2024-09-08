@@ -1,0 +1,21 @@
+{% include 'partials/measurements/upload_measurements_form.html' %}
+{% if error %}
+<dialog open>
+    <article>
+        <header>
+            <strong>Error: {{ error }}</strong>
+        </header>
+        <form method="dialog">
+            <button class="pico-background-red-600" style="border: none;">Close</button>
+        </form>
+    </article>
+</dialog>
+{% endif %}
+
+<p>Measurement {{ measurement_name }} added</p>
+<p>{{ data_points_count }} data points added</p>
+<p>
+    <a href="/measurements/" hx-target="main" hx-replace-url="/measurements/" hx-boost="true">&larr;
+        &larr; Back to Measurements
+    </a>
+</p>

@@ -1,0 +1,4 @@
+<div id="username-check">
+    <input id="username" type="text" name="username" value="{{ username }}" hx-get="/check_username_taken"
+        hx-trigger="input changed delay:500ms, search" hx-target="#username-check" required>
+</div>

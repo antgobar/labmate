@@ -1,0 +1,51 @@
+<h2>Your Dashboard</h2>
+<div class="grid">
+    <article>
+        <h3>Profile</h3>
+        <p>Username: {{ user.username }}</p>
+        <p>Account created: {{ user.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+        <p>Role: {{ user.role }}</p>
+        {% if user.storage_usage > 100 %}
+        <p class="pico-color-red-500">
+            Data usage (MB): {{ user.storage_usage }} / 100
+        </p>
+        {% else %}
+        <p>Data usage (MB): {{ user.storage_usage }} / 100</p>
+        {% endif %}
+        <p>Total samples: {{ user.samples|length }}</p>
+        <p>Total experiments: {{ user.experiments|length }}</p>
+    </article>
+    <article>
+        <h3>Actions</h3>
+        <dialog id="deleta-all-entities">
+            <article>
+                <header>
+                    <form method="dialog">
+                        <button aria-label="Close" rel="prev"></button>
+                    </form>
+                    <strong>This action is irreversible!</strong>
+                </header>
+                <p>
+                    <strong class="pico-color-red-500">Warning: Deleting your data is permanent and cannot be
+                        undone.</strong>
+                </p>
+                <p>This includes all archived and un-archived experiments, samples, methods and measurements</p>
+                <p>Press <code>esc</code> or click <code>X</code> to exit</p>
+                <button style="border: none;" class="pico-background-red-500" hx-delete="/dashboard/all_entities"
+                    hx-target="main"
+                    hx-confirm="Last chance! After you click 'OK' all your data will be deleted. Press esc or click Cancel to exit">
+                    Delete all your data
+                </button>
+            </article>
+        </dialog>
+
+        <section>
+            <div>
+                <button style="border: none;" class="pico-background-red-500"
+                    onclick="document.getElementById('deleta-all-entities').showModal()">
+                    Danger: Delete all your data
+                </button>
+            </div>
+        </section>
+    </article>
+</div>

@@ -1,0 +1,31 @@
+<h2>Messages ({{ message_count }})</h2>
+<div class="table-contaienr">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Received</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in messages %}
+            <tr id="message-row-{{ message.id }}">
+                <td>{{ message.id }}</td>
+                <td>{{ message.name }}</td>
+                <td>{{ message.email }}</td>
+                <td>{{ message.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                <td>
+                    <button hx-get="/admin/messages/{{ message.id }}" hx-target="main">View</button>
+                    <button hx-delete="/admin/messages/{{ message.id }}" hx-swap="main"
+                        hx-target="#message-row-{{ message.id }}" class="pico-background-red-600">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

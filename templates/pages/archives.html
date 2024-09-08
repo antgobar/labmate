@@ -1,0 +1,8 @@
+{% if request.headers.get('HX-Request') %}
+{% include 'partials/archives/archives.html' %}
+{% else %}
+{% extends 'index.html' %}
+{% block content %}
+{% include 'partials/archives/archives.html' %}
+{% endblock %}
+{% endif %}

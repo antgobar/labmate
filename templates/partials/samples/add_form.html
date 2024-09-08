@@ -1,0 +1,12 @@
+<form>
+    <label for="formula">Chemical Formula</label>
+    <input id="formula" type="text" name="formula" placeholder="BaZr0.3Ti0.7O3" required />
+    <label for="format">Sample Format</label>
+    <input id="format" type="text" name="format" placeholder="powder" required />
+    <label for="label">Label</label>
+    <input id="label" type="text" name="label" placeholder="BZT30" />
+    <label for="family">Family</label>
+    <input id="family" type="text" name="family" placeholder="BZT" />
+    <input type="submit" hx-post="/samples/" hx-target="#sample-rows" hx-swap="afterbegin"
+        value="Add Sample">
+</form>

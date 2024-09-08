@@ -1,0 +1,43 @@
+<li>
+    <a href="/experiments/" hx-target="main" hx-replace-url="/experiments" hx-push-url="true">
+        Experiments <span>
+            <img src="/static/svg/experiments.svg" width="25px">
+        </span>
+    </a>
+</li>
+<li>
+    <a href="/samples/" hx-target="main" hx-replace-url="/samples" hx-push-url="true">
+        Samples <span>
+            <img src="/static/svg/samples.svg" width="25px">
+        </span>
+    </a>
+</li>
+<li>
+    <a href="/measurements/" hx-target="main" hx-replace-url="/measurements" hx-push-url="true">
+        Measurements <span>
+            <img src="/static/svg/measurements.svg" width="25px">
+        </span>
+    </a>
+</li>
+<li>
+    <a href="/dashboard/" hx-target="main" hx-replace-url="/dashboard/" hx-push-url="true">
+        Dashboard <span>
+            <img src="/static/svg/dashboard.svg" width="25px">
+        </span>
+    </a>
+</li>
+<li>
+    <a href="/archives/" hx-target="main" hx-replace-url="/archives/" hx-push-url="true">
+        Archives <span>
+            <img src="/static/svg/archives.svg" width="25px">
+        </span>
+    </a>
+</li>
+{% if user.role == "ADMIN" %}
+<li>
+    <a href="/admin/" hx-target="main" hx-replace-url="/admin/" hx-push-url="true">
+        Admin dashboard
+    </a>
+</li>
+{% endif %}
+{% include 'partials/navbar/info_tabs.html' %}

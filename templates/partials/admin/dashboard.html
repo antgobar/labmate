@@ -1,0 +1,5 @@
+<h2>Users</h2>
+<input type="search" name="search_term" placeholder="Search by id or username" aria-label="Search"
+    hx-get="/admin/users/search/" hx-trigger="input changed delay:500ms, search" hx-target="#user-search-results">
+{% include 'partials/admin/users_table.html' %}
+{% include 'partials/admin/messages.html' %}

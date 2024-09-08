@@ -1,0 +1,12 @@
+<tr>
+    <td>{{ user.id }}</td>
+    <td>{{ user.username }}</td>
+    <td>
+        {% include 'partials/admin/user_active_status_button.html' %}
+    </td>
+    <td>{{ user.role }}</td>
+    <td>{{ user.storage_usage }}</td>
+    <td>
+        <small>{{ user.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+    </td>
+</tr>

@@ -1,0 +1,129 @@
+thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.table-container {
+    height: 35rem;
+    overflow-y: auto;
+}
+
+table button {
+    padding: 0.1rem 0.2rem; 
+    border-width: 0;
+    font-size: smaller;
+    width: 5rem;
+}
+
+/* table input {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none;
+    height: 1rem !important;
+} */
+
+th, td {
+    margin: 0 !important;
+    padding: 0.1rem !important;
+}
+
+.wrap-column {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.htmx-indicator{
+    opacity:0;
+    transition: opacity 500ms ease-in;
+}
+.htmx-request .htmx-indicator{
+    opacity:1;
+}
+.htmx-request.htmx-indicator{
+    opacity:1;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+}
+
+#sidebar {
+    padding: 2rem;
+}
+
+#sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+#main-content {
+    flex: 1;
+    padding: 1rem;
+}
+
+#info-tab {
+    display: none;
+}
+
+.pricing-list {
+    padding-left: 0 !important;
+    margin: 0;
+}
+
+.pricing-list li {
+    position: relative;
+    padding-left: 30px; /* Adjust padding to fit the SVG icon */
+    list-style-type: none !important;
+}
+
+.checked::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 20px; 
+    height: 20px;
+    background-image: url('/static/svg/checked-box.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.unchecked::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background-image: url('/static/svg/unchecked-box.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column; /* Stack sidebar and content vertically */
+    }
+    #sidebar {
+        width: 100%; /* Full width for sidebar */
+    }
+    #sidebar nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Distribute space evenly */
+    }
+    #info-tab {
+        display: inline;
+    }
+    #info-tabs {
+        display: none;
+    }
+
+}

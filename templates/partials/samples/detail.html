@@ -1,0 +1,67 @@
+<h2>Sample details</h2>
+<br>
+<div class="grid">
+    <article>
+        <table>
+            <tr>
+                <th>Id</th>
+                <td>{{ sample.id }}</td>
+            </tr>
+            <tr>
+                <th>Formula</th>
+                <td>{{ sample.formula }}</td>
+            </tr>
+            <tr>
+                <th>Format</th>
+                <td>{{ sample.format }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ sample.label }}</td>
+            </tr>
+            <tr>
+                <th>Family</th>
+                <td>{{ sample.family }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ sample.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            </tr>
+            <tr>
+                <th>Last Updated</th>
+                <td>{{ sample.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            </tr>
+            <tr>
+                <th>Experiments</th>
+                <td>{{ sample.experiments | length }}</td>
+            </tr>
+            <tr>
+                <th>Measurements</th>
+                <td>{{ sample.measurements | length }}</td>
+            </tr>
+        </table>
+        <div class="grid">
+            {% include 'partials/samples/edit_dialog.html' %}
+            {% include 'partials/measurements/upload_dialog.html' %}
+        </div>
+    </article>
+    <article>
+        <h4>Associated Experiments</h4>
+        {% include 'partials/samples/link_experiment_dialog.html' %}
+        {% if sample.experiments %}
+        {% set experiments = sample.experiments %}
+        {% include 'partials/experiments/table.html' %}
+        {% endif %}
+        <button onclick="document.getElementById('link-experiment-dialog').showModal()">Link Experiment</button>
+    </article>
+</div>
+<h4>Measurements</h4>
+{% with measurements = sample.measurements %}
+{% if measurements | length > 0 %}
+<div id="table-container" class="overflow-auto table-container">
+    {% include 'partials/measurements/table.html' %}
+</div>
+{% else %}
+<p>No measurements found for this sample.</p>
+{% endif %}
+{% endwith %}

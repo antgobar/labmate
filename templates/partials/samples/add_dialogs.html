@@ -1,0 +1,33 @@
+<dialog id="add-sample-dialog">
+    <article>
+        <header>
+            <form method="dialog">
+                <button aria-label="Close" rel="prev"></button>
+            </form>
+            <strong>Add a single sample</strong>
+        </header>
+        {% include 'partials/samples/add_form.html' %}
+        <article style="margin: 0; padding: 0" id="sample-added-notification">
+        </article>
+    </article>
+</dialog>
+
+<dialog id="upload-sample-dialog">
+    <article>
+        <header>
+            <form method="dialog">
+                <button aria-label="Close" rel="prev"></button>
+            </form>
+            <strong>Upload a file with multiple samples</strong>
+        </header>
+        <p>The CSV file must contain the columns: <code>{{ sample_fields }}</code></p>
+        <p>All other columns will be ignored</p>
+
+        {% include 'partials/samples/upload_sample_form.html' %}
+    </article>
+</dialog>
+
+<section class="grid">
+    <button onclick="document.getElementById('add-sample-dialog').showModal()">Add a single sample</button>
+    <button onclick="document.getElementById('upload-sample-dialog').showModal()">Upload CSV File</button>
+</section>
