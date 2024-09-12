@@ -1,0 +1,27 @@
+<nav id="experiment-pagination">
+    <ul>
+        {% if skip > 0 %}
+        <li>
+            <a hx-get="/experiments/?skip={{ skip | int - limit | int }}&limit={{ limit }}" hx-target="main">&larr;
+                Previous</a>
+        </li>
+        {% else %}
+        <li>
+            <a disabled></a>
+        </li>
+        {% endif %}
+
+    </ul>
+    <ul>
+        {% if experiments | length == limit %}
+        <li>
+            <a hx-get="/experiments/?skip={{ skip | int + limit | int }}&limit={{ limit }}" hx-target="main">Next page
+                &rarr;</a>
+        </li>
+        {% else %}
+        <li>
+            <a disabled></a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

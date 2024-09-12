@@ -1,0 +1,19 @@
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Formula</th>
+            <th>Format</th>
+            <th>Label</th>
+            <th>Family</th>
+            <th >Measurements</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="sample-rows">
+        {% for sample in samples %}
+        {% include 'partials/samples/row.html' %}
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+<div class="grid">
+    <article id="chartSection">
+        <div>
+            <canvas id="chartSpace"></canvas>
+        </div>
+    </article>
+</div>
+<script>
+    if (typeof measurementData === 'undefined') {
+        var measurementData = {
+            data_points: [],
+            variables: []
+        };
+    }
+
+    if (typeof transformedData === 'undefined') {
+        var transformedData = [];
+    }
+
+    if (typeof currentChart === 'undefined') {
+        var currentChart = null;
+    }
+
+    if (typeof chartTypeRadios === 'undefined') {
+        let chartTypeRadios = document.querySelectorAll('input[name="chartType"]');
+        chartTypeRadios.forEach(radio => radio.addEventListener('change', onChartLineTypeChange));
+    }
+
+    var url = "{{ request_endpoint }}";
+    getMeasurementData(url);
+</script>

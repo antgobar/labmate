@@ -1,0 +1,21 @@
+<form id='upload-form' hx-encoding='multipart/form-data'
+    hx-post="{% if sample %}/samples/{{ sample.id }}/measurements/{% else %}/measurements/{% endif %}"
+    hx-target="#upload-form-section">
+    <label for="measurementName">Name</label>
+    <input id="measurementName" type='text' name='name' placeholder="Measurement Name" />
+    <input type='file' name='file' required />
+    <button>
+        Upload
+        <span>
+            <img src="/static/svg/upload.svg">
+        </span>
+    </button>
+</form>
+<br>
+<progress id='progress' value='0' max='100'></progress>
+<div id="upload_response"></div>
+<script>
+    htmx.on('#upload-form', 'htmx:xhr:progress', function (evt) {
+        htmx.find('#progress').setAttribute('value', evt.detail.loaded / evt.detail.total * 100)
+    });
+</script>

@@ -1,0 +1,8 @@
+{% if request.headers.get('HX-Request') %}
+{% include 'partials/auth/login.html' %}
+{% else %}
+{% extends 'index.html' %}
+{% block content %}
+{% include 'partials/auth/login.html' %}
+{% endblock %}
+{% endif %}

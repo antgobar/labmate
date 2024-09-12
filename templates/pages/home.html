@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="centered-text">
+    <h1>
+        Welcome to LabMate!
+    </h1>
+    <h2>
+        Your Electronic Lab Book
+    </h2>
+    <p>
+        <a href="/register" hx-target="main" hx-replace-url="/register">
+            Get Started
+        </a>
+    </p>
+    <p>
+        <strong>
+            <a href="/about#features-section">Development Roadmap</a>
+        </strong>
+    </p>
+    {% if not user %}
+    <p>
+    <div class="grid">
+        {% include 'partials/navbar/info_tabs.html' %}
+    </div>
+    </p>
+    {% endif %}
+    <div class="grid">
+        <article>
+            <header>
+                <strong>Manage your research</strong>
+            </header>
+            <p>
+                Create and manage experiments, samples and measurements.
+            </p>
+            <p>
+                <img src="/static/img/search-samples-example.png" id="trigger-image" alt="">
+            </p>
+            <p>
+                <img src="/static/img/sample-details-example.png" id="trigger-image" alt="">
+            </p>
+
+        </article>
+        <article>
+            <header>
+                <strong>Create entity relationships</strong>
+            </header>
+            <p>
+                Organise your research by linking together measurements, samples and experiments.
+            </p>
+            <img src="/static/img/attach-measurements-example.png" alt="">
+        </article>
+        <article>
+            <header>
+                <strong>Visualise your measurements</strong>
+            </header>
+            <p>
+                Visualise lab sample data with a variety of charts and controls
+            </p>
+            <img src="/static/img/chart-example.png" alt="">
+            <img src="/static/img/chart-controls-example.png" alt="">
+        </article>
+    </div>
+</div>
+{% endblock %}

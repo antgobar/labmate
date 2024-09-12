@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created</th>
+            <th>Samples</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="experiment-rows">
+        {% for experiment in experiments %}
+        {% include 'partials/experiments/row.html' %}
+        {% endfor %}
+    </tbody>
+</table>

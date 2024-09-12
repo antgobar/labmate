@@ -1,0 +1,16 @@
+<dialog id="link-experiment-dialog">
+    <article>
+        <header>
+            <form method="dialog">
+                <button aria-label="Close" rel="prev"></button>
+            </form>
+            <strong>Link this sample to an experiment.</strong>
+        </header>
+        <p>Currently linked experiments will not be shown</p>
+        {% set search_target = 'experiments-link-sample-table' %}
+        {% include 'partials/experiments/search.html' %}
+        <div id="experiments-link-sample-table">
+            {% include 'partials/experiments/table.html' %}
+        </div>
+    </article>
+</dialog>

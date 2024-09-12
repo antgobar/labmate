@@ -1,0 +1,8 @@
+<form>
+    <label for="name">Experiment Name</label>
+    <input id="name" type="text" name="name" required>
+    <label for="description">Experiment Description</label>
+    <textarea id="description" type="text" name="description" required></textarea>
+    <input type="submit" hx-post="/experiments/" hx-target="#experiment-rows" hx-swap="afterbegin"
+        value="Create Experiment">
+</form>

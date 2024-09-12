@@ -1,0 +1,11 @@
+<h2>Measurements</h2>
+<section class="grid">
+    <div>
+        {% include 'partials/measurements/upload_dialog.html' %}
+    </div>
+    <input type="search" name="search_term" placeholder="Search: id, name" aria-label="Search"
+        hx-target="#table-container" hx-swap="innerHTML" hx-trigger="input changed delay:500ms, search"
+        hx-post="/measurements/search/">
+</section>
+{% include 'partials/measurements/table.html' %}
+{% include 'partials/measurements/pagination.html' %}
