@@ -1,9 +1,0 @@
-{% if user.active %}
-<button hx-post="/admin/users/{{ user.id }}/deactivate" hx-swap="outerHTML">
-    Deactivate
-</button>
-{% else %}
-<button hx-post="/admin/users/{{ user.id }}/activate" hx-swap="outerHTML">
-    Activate
-</button>
-{% endif %}

@@ -1,8 +1,0 @@
-{% if request.headers.get('HX-Request') %}
-{% include 'partials/admin/dashboard.html' %}
-{% else %}
-{% extends 'index.html' %}
-{% block content %}
-{% include 'partials/admin/dashboard.html' %}
-{% endblock %}
-{% endif %}

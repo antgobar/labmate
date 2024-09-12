@@ -1,8 +1,0 @@
-{% if request.headers.get('HX-Request') %}
-{% include 'partials/experiments/detail.html' %}
-{% else %}
-{% extends 'index.html' %}
-{% block content %}
-{% include 'partials/experiments/detail.html' %}
-{% endblock %}
-{% endif %}
