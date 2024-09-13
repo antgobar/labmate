@@ -184,7 +184,10 @@ async def upload_samples_file(
             },
         )
 
-    samples = await parse_user_samples(file)
+    contents = await file.read()
+    await file.close()
+
+    samples = await parse_user_samples(contents)
 
     for sample in samples:
         if sample is not None:

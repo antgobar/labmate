@@ -9,10 +9,7 @@ from services import schemas
 from services.errors import CSVFieldError
 
 
-async def parse_user_samples(file: UploadFile) -> list[schemas.LabSample]:
-    contents = await file.read()
-    await file.close()
-
+async def parse_user_samples(contents) -> list[schemas.LabSample]:
     csv_data = StringIO(contents.decode("utf-8"))
     csv_reader = csv.DictReader(csv_data)
 

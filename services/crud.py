@@ -300,7 +300,7 @@ def create_user_experiment(
     name: str,
     description: str,
     sample_families: list[str] | None = None,
-) -> LabSample:
+) -> Experiment:
     now = datetime.now(tz=UTC)
     experiment = Experiment(
         user_id=user.id,

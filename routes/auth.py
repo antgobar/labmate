@@ -13,6 +13,7 @@ from services.crud import (
     register_user_if_not_registered,
 )
 from services.database import DbSession, get_db
+from services.demo import populate_demo_data_on_registration
 from services.models import User
 from services.resources import templates
 
@@ -47,6 +48,7 @@ def register(
             f"Username {username} already exists, please choose another.",
             request,
         )
+    populate_demo_data_on_registration(db, user)
     return RedirectResponse(url="/login", status_code=303)
 
 
