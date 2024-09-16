@@ -2,6 +2,10 @@ html {
     scroll-behavior: smooth;
 }
 
+[id] {
+    scroll-margin-top: 160px; /* Set this to the height of your sticky navbar */
+}
+
 .top-nav {
     position: sticky; top: 0;
     z-index: 1000;
@@ -131,6 +135,10 @@ a img {
     background-image: url('/static/svg/unchecked-box.svg');
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.scroll-offset {
+    scroll-margin-top: 260px;
 }
 
 @media (max-width: 768px) {
