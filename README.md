@@ -27,5 +27,3 @@ alembic upgrade head
 - [LabKey](https://www.labkey.com/)
 - [LabVantage](https://www.labvantage.com/)
 - [LabWare](https://www.labware.com/)
-
-

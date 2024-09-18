@@ -6,11 +6,6 @@ html {
     scroll-margin-top: 160px; /* Set this to the height of your sticky navbar */
 }
 
-.top-nav {
-    position: sticky; top: 0;
-    z-index: 1000;
-}
-
 thead th {
     position: sticky;
     top: 0;

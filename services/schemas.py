@@ -1,6 +1,5 @@
 from typing import Any
 
-import polars as pl
 from pydantic import BaseModel, EmailStr, model_validator
 
 from services.errors import DataPointNotInEveryVariableError, DuplicateVariableNameError
@@ -34,9 +33,7 @@ class Measurements(BaseModel):
         if len(names) != len(set(names)):
             raise DuplicateVariableNameError
 
-        df = pl.DataFrame(self.data_points)
-
-        if set(df.columns) != set(names):
+        if set(self.data_points[0].keys()) != set(names):
             raise DataPointNotInEveryVariableError
 
 
