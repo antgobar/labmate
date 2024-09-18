@@ -1,30 +1,26 @@
-<div hx-boost="true">
-    {% if user %}
-    <li>
-        <a href="/logout" hx-boost="false">
-            Log out
-            <span>
-                <img src="/static/svg/log-out.svg">
-            </span>
-        </a>
-    </li>
-    {% else %}
-    <li>
-        <a href="/register" hx-target="main" hx-replace-url="/register">
-            <button>
-                <strong>
-                    Register
-                </strong>
-            </button>
-        </a>
-    </li>
-    <li>
-        <a href="/login" hx-target="main" hx-replace-url="/login">
-            Log in
-            <span>
-                <img src="/static/svg/log-in.svg">
-            </span>
-        </a>
-    </li>
-    {% endif %}
-</div>
+{% if user %}
+<li>
+    <a href="/logout" hx-boost="false">
+        Log out
+        <span>
+            <img src="/static/svg/log-out.svg" alt="">
+        </span>
+    </a>
+</li>
+{% else %}
+<li>
+    <a role="button" href="/register" hx-target="main" hx-replace-url="/register">
+        <strong>
+            Register
+        </strong>
+    </a>
+</li>
+<li>
+    <a href="/login" hx-target="main" hx-replace-url="/login">
+        Log in
+        <span>
+            <img src="/static/svg/log-in.svg" alt="">
+        </span>
+    </a>
+</li>
+{% endif %}

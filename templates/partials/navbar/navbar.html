@@ -3,15 +3,15 @@
         <li>
             <h1>
                 <a href="/">
-                    LabMate <span><img src="/static/svg/home.svg"></span>
+                    LabMate <span><img src="/static/svg/home.svg" alt=""></span>
                 </a>
             </h1>
         </li>
     </ul>
-    <ul id="info-tabs">
+    <ul id="info-tabs" hx-boost="true">
         {% include 'partials/navbar/tabs.html' %}
     </ul>
-    <ul>
+    <ul hx-boost="true">
         {% include 'partials/navbar/access.html' %}
     </ul>
 </nav>
