@@ -30,3 +30,5 @@ def populate_demo_data_on_registration(db: DbSession, user: User):
             except Exception:
                 continue
         db.commit()
+
+    print(f"Demo data populated for user {user.id}")

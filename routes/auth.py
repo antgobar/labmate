@@ -1,7 +1,7 @@
 import time
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Form, Request, Response
+from fastapi import APIRouter, BackgroundTasks, Depends, Form, Request, Response
 from fastapi.responses import RedirectResponse
 
 from config import COOKIE_KEY, MAX_COOKIE_AGE, RESERVED_USERNAMES
@@ -13,7 +13,7 @@ from services.crud import (
     register_user_if_not_registered,
 )
 from services.database import DbSession, get_db
-from services.demo import populate_demo_data_on_registration
+from services.tasks import populate_demo_data_on_registration
 from services.models import User
 from services.resources import templates
 
@@ -32,6 +32,8 @@ def register(
     username: Annotated[str, Form()],
     password: Annotated[str, Form()],
     db: DbSession = Depends(get_db),
+    *,
+    background_tasks: BackgroundTasks,
 ):
     if username.lower() in RESERVED_USERNAMES:
         return error_response(
@@ -48,7 +50,7 @@ def register(
             f"Username {username} already exists, please choose another.",
             request,
         )
-    populate_demo_data_on_registration(db, user)
+    background_tasks.add_task(populate_demo_data_on_registration, db, user)
     return RedirectResponse(url="/login", status_code=303)
 
 
