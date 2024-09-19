@@ -37,24 +37,15 @@ def get_login(request: Request, user: User = Depends(get_current_user)):
 
 
 @router.get("/about")
-def get_about_page(request: Request, user: User = Depends(get_current_user)):
-    return templates.TemplateResponse(
-        "pages/about.html",
-        {"request": request, "user": user},
-    )
+def get_about_page():
+    return RedirectResponse(url="/#about-section", status_code=301)
 
 
 @router.get("/pricing")
-def get_pricing_page(request: Request, user: User = Depends(get_current_user)):
-    return templates.TemplateResponse(
-        "pages/pricing.html",
-        {"request": request, "user": user},
-    )
+def get_pricing_page():
+    return RedirectResponse(url="/#pricing-section", status_code=301)
 
 
 @router.get("/contact")
-def get_contact_page(request: Request, user: User = Depends(get_current_user)):
-    return templates.TemplateResponse(
-        "pages/contact.html",
-        {"request": request, "user": user},
-    )
+def get_contact_page():
+    return RedirectResponse(url="/#contact-section", status_code=301)

@@ -14,7 +14,7 @@
     </p>
     <p>
         <strong>
-            <a href="/about#features-section">Development Roadmap</a>
+            <a href="/#features-section">Development Roadmap</a>
         </strong>
     </p>
     {% if not user %}
@@ -59,4 +59,10 @@
         </article>
     </div>
 </div>
+
+{% include 'partials/pages/about.html' %}
+{% include 'partials/pages/features.html' %}
+{% include 'partials/pages/pricing.html' %}
+{% include 'partials/pages/contact.html' %}
+{% include 'partials/pages/terms_and_conditions.html' %}
 {% endblock %}

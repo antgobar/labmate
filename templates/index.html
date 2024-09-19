@@ -53,8 +53,30 @@
             </span>
         </small>
     </footer>
+    <button id="backToTopBtn" title="Go to top"><img src="/static/svg/scroll-up.svg" alt=""></button>
+
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        (function () {
+            let backToTopBtn = document.getElementById("backToTopBtn");
+
+            if (backToTopBtn) {
+                window.onscroll = function () {
+                    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                        backToTopBtn.style.display = "block";
+                    } else {
+                        backToTopBtn.style.display = "none";
+                    }
+                };
+                backToTopBtn.onclick = function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                };
+            }
+        })();
     </script>
 </body>
 

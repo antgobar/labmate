@@ -156,3 +156,22 @@ a img {
     }
 
 }
+
+#backToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    display: none;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+#backToTopBtn:hover {
+    opacity: 1; 
+}
