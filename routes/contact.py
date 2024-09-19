@@ -4,7 +4,6 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 from pydantic import ValidationError
 
-from services.crud import get_current_user
 from services.database import DbSession, get_db
 from services.models import ContactResponse
 from services.schemas import ContactForm
