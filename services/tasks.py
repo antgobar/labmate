@@ -14,7 +14,7 @@ def populate_demo_data_on_registration(db: DbSession, user: User):
         "This is a demo experiment, have a look at the attached samples",
     )
 
-    with open("tests/data/labsamples.csv") as csv_file:
+    with open("static/csv/samples_demo_1.csv") as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)
         for row in csv_reader:

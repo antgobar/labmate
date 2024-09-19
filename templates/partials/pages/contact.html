@@ -1,39 +1,6 @@
 <h2 id="contact-section">Contact</h2>
 <p>Get in touch with us for more information about our services, arrange a consultation call or provide some feedback.
 </p>
-
-{% if error_messages %}
-<dialog open>
-    <article>
-        <header>
-            <form method="dialog">
-                <button aria-label="Close" rel="prev"></button>
-            </form>
-            <strong>The following errors occurred:</strong>
-        </header>
-        <div>
-            <ul>
-                {% for error in error_messages %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </article>
-</dialog>
-{% endif %}
-{% if success_message %}
-<dialog open>
-    <article>
-        <header>
-            <form method="dialog">
-                <button aria-label="Close" rel="prev"></button>
-            </form>
-            <strong>Message</strong>
-        </header>
-        {{ success_message }}
-    </article>
-</dialog>
-{% endif %}
 <form id="contactForm" action="/contact/messages" method="post">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" required>
