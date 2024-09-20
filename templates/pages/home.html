@@ -63,8 +63,7 @@
             <strong>Download Demo Data</strong>
         </header>
         <div class="grid">
-            {% for file in ['samples_1', 'data_1', 'data_2', 'data_3',
-            'data_4'] %}
+            {% for file in ['samples', 'sine_wave', 'xrd_data'] %}
             <a href="/static/csv/{{ file }}.csv" download>
                 <button>{{ file}}.csv
                     <img src="/static/svg/download.svg" alt="">
