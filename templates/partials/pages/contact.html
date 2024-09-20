@@ -1,48 +1,51 @@
 <h2 id="contact-section">Contact</h2>
-<p>Get in touch with us for more information about our services, arrange a consultation call or provide some feedback.
-</p>
-<form id="contactForm" action="/contact/messages" method="post">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-    <label for="message">Message</label>
-    <small>
-        <div class="character-count">
-            <span id="charCount">0</span> / 2000
-            <span id="limitMessage" class="exceeded" style="display: none;">Exceeded character limit</span>
+<article>
+    <p>Get in touch with us for more information about our services, arrange a consultation call or provide some
+        feedback.
+    </p>
+    <form id="contactForm" action="/contact/messages" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message</label>
+        <small>
+            <div class="character-count">
+                <span id="charCount">0</span> / 2000
+                <span id="limitMessage" class="exceeded" style="display: none;">Exceeded character limit</span>
+            </div>
+        </small>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <div style="display:none;">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website">
         </div>
-    </small>
-    <textarea id="message" name="message" rows="4" required></textarea>
-    <div style="display:none;">
-        <label for="website">Website</label>
-        <input type="text" id="website" name="website">
-    </div>
-    <button type="submit" id="sendMessage">Send Message</button>
-</form>
-<script>
-    function initialiseForm() {
-        const textField = document.getElementById('message');
-        const charCountDisplay = document.getElementById('charCount');
-        const limitMessage = document.getElementById('limitMessage');
-        const submitButton = document.getElementById('sendMessage');
-        const MAX_CHAR_LIMIT = 2000;
+        <button type="submit" id="sendMessage">Send Message</button>
+    </form>
+    <script>
+        function initialiseForm() {
+            const textField = document.getElementById('message');
+            const charCountDisplay = document.getElementById('charCount');
+            const limitMessage = document.getElementById('limitMessage');
+            const submitButton = document.getElementById('sendMessage');
+            const MAX_CHAR_LIMIT = 2000;
 
-        function updateCharacterCount() {
-            const currentLength = textField.value.length;
-            charCountDisplay.textContent = currentLength;
+            function updateCharacterCount() {
+                const currentLength = textField.value.length;
+                charCountDisplay.textContent = currentLength;
 
-            if (currentLength > MAX_CHAR_LIMIT) {
-                charCountDisplay.style.color = 'red';
-                limitMessage.style.display = 'inline';
-                submitButton.disabled = true;
-            } else {
-                charCountDisplay.style.color = '';
-                limitMessage.style.display = 'none';
-                submitButton.disabled = false;
+                if (currentLength > MAX_CHAR_LIMIT) {
+                    charCountDisplay.style.color = 'red';
+                    limitMessage.style.display = 'inline';
+                    submitButton.disabled = true;
+                } else {
+                    charCountDisplay.style.color = '';
+                    limitMessage.style.display = 'none';
+                    submitButton.disabled = false;
+                }
             }
+            textField.addEventListener('input', updateCharacterCount);
         }
-        textField.addEventListener('input', updateCharacterCount);
-    }
-    initialiseForm();
-</script>
+        initialiseForm();
+    </script>
+</article>
