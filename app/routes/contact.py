@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 from pydantic import ValidationError
 
-from services.database import DbSession, get_db
-from services.models import ContactResponse
-from services.schemas import ContactForm
+from app.services.database import DbSession, get_db
+from app.services.models import ContactResponse
+from app.services.schemas import ContactForm
 
 router = APIRouter(prefix="/contact", tags=["contact"])
 

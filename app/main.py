@@ -2,18 +2,18 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
-from routes.admin import router as admin
-from routes.archives import router as archives
-from routes.auth import router as auth
-from routes.contact import router as contact
-from routes.dashboard import router as dashboard
-from routes.experiments import router as experiments
-from routes.measurements import router as measurements
-from routes.pages import router as pages
-from routes.samples import router as samples
-from services.middleware import AuthMiddleware
-from services.resources import static_files
-from services.tasks import create_admin_user
+from app.routes.admin import router as admin
+from app.routes.archives import router as archives
+from app.routes.auth import router as auth
+from app.routes.contact import router as contact
+from app.routes.dashboard import router as dashboard
+from app.routes.experiments import router as experiments
+from app.routes.measurements import router as measurements
+from app.routes.pages import router as pages
+from app.routes.samples import router as samples
+from app.services.middleware import AuthMiddleware
+from app.services.resources import static_files
+from app.services.tasks import create_admin_user
 
 create_admin_user()
 

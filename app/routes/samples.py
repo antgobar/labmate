@@ -3,8 +3,8 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, File, Form, Request, Response, UploadFile
 from fastapi.responses import HTMLResponse, RedirectResponse
 
-from services import schemas
-from services.crud import (
+from app.services import schemas
+from app.services.crud import (
     add_measurements_to_user_sample,
     archive_user_sample_by_id,
     create_user_sample,
@@ -17,15 +17,15 @@ from services.crud import (
     search_user_samples,
     unarchive_user_sample_by_id,
 )
-from services.database import DbSession, get_db
-from services.errors import (
+from app.services.database import DbSession, get_db
+from app.services.errors import (
     CSVFieldError,
     DataPointNotInEveryVariableError,
     DuplicateVariableNameError,
 )
-from services.file_handler import parse_measurements, parse_user_samples
-from services.models import LabSample, User
-from services.resources import templates
+from app.services.file_handler import parse_measurements, parse_user_samples
+from app.services.models import LabSample, User
+from app.services.resources import templates
 
 router = APIRouter(prefix="/samples", tags=["samples"])
 

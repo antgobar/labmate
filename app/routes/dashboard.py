@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 
-from services.crud import (
+from app.services.crud import (
     calculate_storage_size_for_user,
     delete_all_user_entities,
     get_current_user,
 )
-from services.database import DbSession, get_db
-from services.models import User
-from services.resources import templates
+from app.services.database import DbSession, get_db
+from app.services.models import User
+from app.services.resources import templates
 
 router = APIRouter(prefix="/dashboard", tags=["dashboard"])
 

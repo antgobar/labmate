@@ -2,16 +2,16 @@ import csv
 import os
 from datetime import UTC, datetime
 
-from config import ADMIN_PASSWORD_KEY, ADMIN_USERNAME
-from services import schemas
-from services.crud import (
+from app.config import ADMIN_PASSWORD_KEY, ADMIN_USERNAME
+from app.services import schemas
+from app.services.crud import (
     create_user_experiment,
     create_user_sample,
     get_user_by_username,
 )
-from services.database import DbSession, SessionLocal
-from services.models import User, UserRole
-from services.security import hash_password
+from app.services.database import DbSession, SessionLocal
+from app.services.models import User, UserRole
+from app.services.security import hash_password
 
 
 def populate_demo_data_on_registration(db: DbSession, user: User):

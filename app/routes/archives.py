@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 
-from services.crud import (
+from app.services.crud import (
     delete_all_user_archives,
     get_current_user,
     get_user_archived_entity_summary,
 )
-from services.database import DbSession, get_db
-from services.models import User
-from services.resources import templates
+from app.services.database import DbSession, get_db
+from app.services.models import User
+from app.services.resources import templates
 
 router = APIRouter(prefix="/archives", tags=["archives"])
 

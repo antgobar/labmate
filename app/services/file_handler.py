@@ -5,8 +5,8 @@ import polars as pl
 from fastapi import UploadFile
 from pydantic import ValidationError
 
-from services import schemas
-from services.errors import CSVFieldError
+from app.services import schemas
+from app.services.errors import CSVFieldError
 
 
 async def parse_user_samples(contents) -> list[schemas.LabSample]:

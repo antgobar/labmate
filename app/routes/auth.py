@@ -4,18 +4,18 @@ from typing import Annotated
 from fastapi import APIRouter, BackgroundTasks, Depends, Form, Request, Response
 from fastapi.responses import RedirectResponse
 
-from config import COOKIE_KEY, MAX_COOKIE_AGE, RESERVED_USERNAMES
-from services.crud import (
+from app.config import COOKIE_KEY, MAX_COOKIE_AGE, RESERVED_USERNAMES
+from app.services.crud import (
     get_current_user,
     get_user_by_username,
     login_user,
     logout_user,
     register_user_if_not_registered,
 )
-from services.database import DbSession, get_db
-from services.tasks import populate_demo_data_on_registration
-from services.models import User
-from services.resources import templates
+from app.services.database import DbSession, get_db
+from app.services.tasks import populate_demo_data_on_registration
+from app.services.models import User
+from app.services.resources import templates
 
 router = APIRouter(tags=["auth"])
 

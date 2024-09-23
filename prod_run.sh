@@ -1,2 +1,3 @@
-alembic upgrade head;
-fastapi run --port $PORT
+#!/bin/bash
+# alembic upgrade head;
+fastapi run app/main.py --port $PORT

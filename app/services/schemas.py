@@ -2,7 +2,10 @@ from typing import Any
 
 from pydantic import BaseModel, EmailStr, model_validator
 
-from services.errors import DataPointNotInEveryVariableError, DuplicateVariableNameError
+from app.services.errors import (
+    DataPointNotInEveryVariableError,
+    DuplicateVariableNameError,
+)
 
 
 class LabSample(BaseModel):

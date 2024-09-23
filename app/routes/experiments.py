@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, Form, Request, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
 
-from services import schemas
-from services.crud import (
+from app.services import schemas
+from app.services.crud import (
     archive_user_experiment_by_id,
     create_user_experiment,
     delete_user_experiment_by_id,
@@ -18,9 +18,9 @@ from services.crud import (
     unarchive_user_experiment_by_id,
     unlink_sample_and_experiment,
 )
-from services.database import DbSession, get_db
-from services.models import User
-from services.resources import templates
+from app.services.database import DbSession, get_db
+from app.services.models import User
+from app.services.resources import templates
 
 router = APIRouter(prefix="/experiments", tags=["experiments"])
 

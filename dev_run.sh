@@ -1,3 +1,4 @@
+#!/bin/bash
 source .venv/bin/activate;
 alembic upgrade head;
-fastapi dev main.py
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload

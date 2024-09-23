@@ -4,7 +4,7 @@ import os
 from sqlalchemy import create_engine, pool
 from sqlalchemy.orm import Session, declarative_base, sessionmaker
 
-from config import DATABASE_URL_KEY
+from app.config import DATABASE_URL_KEY
 
 DATABASE_URL = os.getenv(DATABASE_URL_KEY)
 

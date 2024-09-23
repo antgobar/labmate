@@ -1,10 +1,14 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 
-from services.crud import calculate_storage_size_for_user, get_current_user, search_user
-from services.database import DbSession, get_db
-from services.models import ContactResponse, User, UserRole
-from services.resources import templates
+from app.services.crud import (
+    calculate_storage_size_for_user,
+    get_current_user,
+    search_user,
+)
+from app.services.database import DbSession, get_db
+from app.services.models import ContactResponse, User, UserRole
+from app.services.resources import templates
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 

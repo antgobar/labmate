@@ -4,7 +4,7 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config, pool
 
 from alembic import context
-from services.models import ModelBase
+from app.services.models import ModelBase
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 

@@ -13,7 +13,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 
-from services.database import Base, engine
+from app.services.database import Base, engine
 
 
 class SubscriptionLevel(Enum):

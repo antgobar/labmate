@@ -4,10 +4,10 @@ from fastapi import Request
 from fastapi.responses import RedirectResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from config import PROTECTED_ENDPOINTS
-from services.crud import get_current_user
-from services.database import get_db
-from services.models import UserRole
+from app.config import PROTECTED_ENDPOINTS
+from app.services.crud import get_current_user
+from app.services.database import get_db
+from app.services.models import UserRole
 
 
 class AuthMiddleware(BaseHTTPMiddleware):

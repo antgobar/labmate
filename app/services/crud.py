@@ -3,11 +3,11 @@ from datetime import UTC, datetime
 from fastapi import Depends, Request
 from sqlalchemy import or_, text
 
-from config import COOKIE_KEY
-from services import schemas
-from services.database import DbSession, get_db
-from services.models import Experiment, LabSample, Measurement, User, UserSession
-from services.security import hash_password, verify_password
+from app.config import COOKIE_KEY
+from app.services import schemas
+from app.services.database import DbSession, get_db
+from app.services.models import Experiment, LabSample, Measurement, User, UserSession
+from app.services.security import hash_password, verify_password
 
 
 def search_user(db: DbSession, search_term: str | int) -> list[User]:
