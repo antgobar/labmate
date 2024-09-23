@@ -11,9 +11,11 @@ from routes.experiments import router as experiments
 from routes.measurements import router as measurements
 from routes.pages import router as pages
 from routes.samples import router as samples
-from services.admin import create_admin_user
 from services.middleware import AuthMiddleware
 from services.resources import static_files
+from services.tasks import create_admin_user
+
+create_admin_user()
 
 app = FastAPI()
 
@@ -37,9 +39,6 @@ app.add_middleware(
 )
 
 app.mount("/static", static_files, name="static")
-
-
-create_admin_user()
 
 
 @app.get("/favicon.ico", include_in_schema=False)
