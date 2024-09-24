@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    user: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: labmate
+    expose:
+      - 5432
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  app:
+    image: ghcr.io/antgobar/labmate:prod
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://user:password@db/labmate
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
