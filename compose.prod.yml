@@ -6,9 +6,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: labmateuser
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: labmatedb
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     healthcheck:
@@ -24,10 +23,13 @@ services:
       - .:/code
     ports:
       - "8000:8000"
+    entrypoint: ["./prod_run.sh"]
     environment:
-      DATABASE_URL: postgresql://labmateuser:labmatepassword@db/labmatedb
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
 volumes:
   postgres_data:

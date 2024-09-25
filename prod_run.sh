@@ -1,3 +1,3 @@
 #!/bin/bash
-# alembic upgrade head;
+alembic upgrade head;
 fastapi run app/main.py --port $PORT
