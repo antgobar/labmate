@@ -19,10 +19,7 @@ services:
       ADMINER_DEFAULT_SERVER: db 
 
   app:
-    build:
-      context: .
-      args:
-        - ENVIRONMENT=prod
+    build: .
     volumes:
       - .:/code
     ports:

@@ -23,9 +23,6 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-    build:
-      args:
-        ENVIRONMENT: prod
     environment:
       DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
