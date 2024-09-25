@@ -39,13 +39,11 @@ def populate_demo_data_on_registration(db: DbSession, user: User):
                 continue
         db.commit()
 
-    print(f"Demo data populated for user {user.id}")
-
 
 def create_admin_user() -> None:
     db = SessionLocal()
     admin_username = ADMIN_USERNAME
-    hashed_password = hash_password(os.getenv(ADMIN_PASSWORD_KEY))
+    hashed_password = hash_password(os.getenv("ADMIN_PASSWORD"))
     user = get_user_by_username(db, admin_username)
     if user:
         user.hashed_password = hashed_password

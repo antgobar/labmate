@@ -6,11 +6,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: user
+      POSTGRES_USER: labmateuser
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: labmate
-    expose:
-      - 5432
+      POSTGRES_DB: labmatedb
+    ports:
+      - "5432:5432"
     healthcheck:
       test: [ "CMD", "pg_isready" ]
       interval: 10s
@@ -25,7 +25,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql://user:password@db/labmate
+      DATABASE_URL: postgresql://labmateuser:labmatepassword@db/labmatedb
     depends_on:
       - db
 

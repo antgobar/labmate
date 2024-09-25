@@ -23,10 +23,10 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     environment:
-      DATABASE_URL: postgresql://labmateuser:labmatepassword@db/labmatedb
       ADMIN_PASSWORD: admin
+      DATABASE_URL: postgresql://labmateuser:labmatepassword@db:5432/labmatedb
     depends_on:
       - db
 

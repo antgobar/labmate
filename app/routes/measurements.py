@@ -131,7 +131,7 @@ def measurements_upload_response_error(request: Request, error_message: str):
 @router.post("/")
 async def upload_measurement(
     request: Request,
-    name: Annotated[str, Form()] | None = None,
+    name: str = Form(None),
     file: UploadFile = File(...),
     db: DbSession = Depends(get_db),
     user: User = Depends(get_current_user),
@@ -141,7 +141,7 @@ async def upload_measurement(
 
     if not name:
         name = file.filename.replace(".csv", "")
-
+    
     try:
         measurement_data = await parse_measurements(name, file)
     except CSVFieldError:
