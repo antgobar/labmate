@@ -23,9 +23,11 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-    entrypoint: ["./prod_run.sh"]
+    build:
+      args:
+        ENVIRONMENT: prod
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     depends_on:
       db:
