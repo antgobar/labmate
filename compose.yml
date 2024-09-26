@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:16
     environment:
-      POSTGRES_USER: labmateuser
-      POSTGRES_PASSWORD: labmatepassword
-      POSTGRES_DB: labmatedb
+      - POSTGRES_USER=labmateuser
+      - POSTGRES_PASSWORD=labmatepassword
+      - POSTGRES_DB=labmatedb
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -25,8 +25,8 @@ services:
     ports:
       - "127.0.0.1:8000:8000"
     environment:
-      ADMIN_PASSWORD: admin
-      DATABASE_URL: postgresql://labmateuser:labmatepassword@db:5432/labmatedb
+      - ADMIN_PASSWORD=admin
+      - DATABASE_URL=postgresql://labmateuser:labmatepassword@db:5432/labmatedb
     depends_on:
       - db
 

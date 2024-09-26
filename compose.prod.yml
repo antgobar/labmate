@@ -6,17 +6,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      - POSTGRES_PASSWORD_FILE=/run/secrets/pg-password
+      - POSTGRES_DB=labmate
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres"]
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "labmate"]
       interval: 10s
       timeout: 5s
       retries: 5
-
+    secrets:
+      - pg-password
 
   app:
     image: ghcr.io/antgobar/labmate:prod
@@ -25,11 +25,25 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
-      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=/run/secrets/pg-password
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=labmate
+      - ADMIN_PASSWORD=/run/secrets/admin-password
+      - RUNTIME=docker
     depends_on:
       db:
         condition: service_healthy
+    secrets:
+      - pg-password
+      - admin-password
 
 volumes:
   postgres_data:
+
+secrets:
+  pg-password:
+    file: secrets/pg_password.txt
+
+  admin-password:
+    file: secrets/admin_password.txt

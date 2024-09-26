@@ -1,5 +1,3 @@
-from typing import Annotated
-
 from fastapi import APIRouter, Depends, File, Form, Request, Response, UploadFile
 from fastapi.responses import HTMLResponse
 
@@ -141,7 +139,7 @@ async def upload_measurement(
 
     if not name:
         name = file.filename.replace(".csv", "")
-    
+
     try:
         measurement_data = await parse_measurements(name, file)
     except CSVFieldError:

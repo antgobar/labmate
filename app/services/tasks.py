@@ -2,7 +2,7 @@ import csv
 import os
 from datetime import UTC, datetime
 
-from app.config import ADMIN_PASSWORD_KEY, ADMIN_USERNAME
+from app.config import ADMIN_USERNAME
 from app.services import schemas
 from app.services.crud import (
     create_user_experiment,
@@ -43,7 +43,10 @@ def populate_demo_data_on_registration(db: DbSession, user: User):
 def create_admin_user() -> None:
     db = SessionLocal()
     admin_username = ADMIN_USERNAME
-    hashed_password = hash_password(os.getenv("ADMIN_PASSWORD"))
+    admin_password = os.getenv("ADMIN_PASSWORD")
+    if not admin_password:
+        raise Exception("Missing environment variable ADMIN_PASSWORD")
+    hashed_password = hash_password(admin_password)
     user = get_user_by_username(db, admin_username)
     if user:
         user.hashed_password = hashed_password
