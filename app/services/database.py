@@ -12,7 +12,9 @@ def construct_database_url():
         return database_url
 
     user = os.getenv("POSTGRES_USER")
-    password = os.getenv("POSTGRES_PASSWORD")
+    password_file = os.getenv("POSTGRES_PASSWORD_FILE")
+    with open(password_file) as file:
+        password = file.read().strip()
     host = os.getenv("POSTGRES_HOST")
     database = os.getenv("POSTGRES_DB")
     if not all((user, password, host, database)):

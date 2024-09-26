@@ -44,8 +44,16 @@ def create_admin_user() -> None:
     db = SessionLocal()
     admin_username = ADMIN_USERNAME
     admin_password = os.getenv("ADMIN_PASSWORD")
+
     if not admin_password:
-        raise Exception("Missing environment variable ADMIN_PASSWORD")
+        admin_password_file = os.getenv("ADMIN_PASSWORD_FILE")
+        if not admin_password:
+            raise Exception(
+                "Missing environment variable ADMIN_PASSWORD or ADMIN_PASSWORD_FILE"
+            )
+        with open(admin_password_file) as file:
+            admin_password = file.read().strip()
+
     hashed_password = hash_password(admin_password)
     user = get_user_by_username(db, admin_username)
     if user:
