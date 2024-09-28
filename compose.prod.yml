@@ -19,22 +19,30 @@ services:
   reverse-proxy:
     image: traefik:v3.1
     command: 
-      - "--api.insecure=true" # needed for the traefik dashboard
-      - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
+      - "--providers.docker"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--providers.docker.exposedbydefault=false"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=labmate@ant0n.uk"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--entryPoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entryPoints.web.http.redirections.entrypoint.scheme=https"
     ports:
       - "80:80"
-      - "8080:8080"
+      - "443:443"
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - letsencrypt:/letsencrypt
 
   labmate:
     image: ghcr.io/antgobar/labmate:prod
     labels: 
       - "traefik.enable=true"
-      - "traefik.http.routers.labmate.rule=Host(`vps.ant0n.uk`)"
+      - "traefik.http.routers.labmate.rule=Host(`ant0n.uk`)"
+      - "traefik.http.routers.labmate.entrypoints=websecure"
+      - "traefik.http.routers.labmate.tls.certresolver=myresolver"
     volumes:
       - .:/code
     environment: 
