@@ -32,7 +32,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - CF_DNS_API_TOKEN=$CF_DNS_API_TOKEN
+      - CF_ZONE_API_TOKEN=$CF_ZONE_API_TOKEN
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - letsencrypt:/letsencrypt
