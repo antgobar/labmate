@@ -89,6 +89,7 @@ async def edit_measurement_by_id(
         request_base_endpoint = request_base_endpoint.replace("http", "https")
 
     request_endpoint = request_base_endpoint + f"{ENDPOINT}/{measurement_id}/data/"
+    print(request_endpoint)
 
     return templates.TemplateResponse(
         "pages/measurement_detail.html",
