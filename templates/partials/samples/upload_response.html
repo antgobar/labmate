@@ -24,7 +24,7 @@
 <p>Measurement {{ measurement_name }} added</p>
 <p>{{ data_points_count }} data points added</p>
 <p>
-    <a href="/samples/{{ sample.id }}" hx-target="main" hx-replace-url="/samples/{{ sample.id }}" hx-boost="true">&larr;
+    <a href="/samples/{{ sample.id }}" hx-target="main" hx-replace-url="/samples/{{ sample.id }}" hx-boost="true">
         &larr; Back to sample
     </a>
 </p>
@@ -33,7 +33,7 @@
 {% if upload_entity == "samples" %}
 <p>{{ samples_created_count }} samples created</p>
 <p>{{ sample_created_error_count }} errors</p>
-<a href="/samples/" hx-target="main" hx-replace-url="/samples" hx-boost="true">&larr;
+<a href="/samples/" hx-target="main" hx-replace-url="/samples" hx-boost="true">
     &larr; Back to samples
 </a>
 {% endif %}

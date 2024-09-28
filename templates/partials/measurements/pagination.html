@@ -2,8 +2,9 @@
     <ul>
         {% if skip > 0 %}
         <li>
-            <a hx-get="/measurements/?skip={{ skip | int - limit | int }}&limit={{ limit }}" hx-target="main">&larr;
-                Previous</a>
+            <a hx-get="/measurements/?skip={{ skip | int - limit | int }}&limit={{ limit }}" hx-target="main">
+                &larr; Previous
+            </a>
         </li>
         {% else %}
         <li>
