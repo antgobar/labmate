@@ -1,3 +1,5 @@
+import os
+
 from fastapi import APIRouter, Depends, File, Form, Request, Response, UploadFile
 from fastapi.responses import HTMLResponse
 
@@ -82,14 +84,19 @@ async def edit_measurement_by_id(
     if not measurement:
         return Response(status_code=404)
 
+    request_base_endpoint = str(request.base_url)
+    if os.getenv("ENVIRONMENT") == "prod":
+        request_base_endpoint = request_base_endpoint.replace("http", "https")
+
+    request_endpoint = request_base_endpoint + f"{ENDPOINT}/{measurement_id}/data/"
+
     return templates.TemplateResponse(
         "pages/measurement_detail.html",
         {
             "request": request,
             "user": user,
             "measurement": measurement,
-            "request_endpoint": str(request.base_url)
-            + f"{ENDPOINT}/{measurement_id}/data/",
+            "request_endpoint": request_endpoint
         },
     )
 
