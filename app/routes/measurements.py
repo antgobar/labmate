@@ -1,5 +1,3 @@
-import os
-
 from fastapi import APIRouter, Depends, File, Form, Request, Response, UploadFile
 from fastapi.responses import HTMLResponse
 
@@ -90,7 +88,7 @@ async def edit_measurement_by_id(
             "request": request,
             "user": user,
             "measurement": measurement,
-            "request_endpoint": f"{ENDPOINT}/{measurement_id}/data/"
+            "request_endpoint": f"{ENDPOINT}/{measurement_id}/data/",
         },
     )
 

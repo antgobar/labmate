@@ -52,7 +52,6 @@ services:
       - POSTGRES_HOST=db
       - POSTGRES_DB=labmate
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
-      - ENVIRONMENT=prod
     env_file:
       - .env
     depends_on:
