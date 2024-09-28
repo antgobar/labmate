@@ -21,6 +21,8 @@ services:
     command: 
       - "--api.insecure=true" # needed for the traefik dashboard
       - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
     ports:
       - "80:80"
       - "8080:8080"
