@@ -30,6 +30,9 @@ services:
 
   labmate:
     image: ghcr.io/antgobar/labmate:prod
+    labels: 
+      - "traefik.enable=true"
+      - "traefik.http.routers.guestbook.rule=Host(`vps.ant0n.uk`)"
     volumes:
       - .:/code
     environment: 
