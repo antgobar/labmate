@@ -62,8 +62,7 @@ def measurement_detail(
             "request": request,
             "user": user,
             "measurement": measurement,
-            "request_endpoint": str(request.base_url)
-            + f"{ENDPOINT}/{measurement_id}/data/",
+            "request_endpoint": f"{ENDPOINT}/{measurement_id}/data/",
         },
     )
 
