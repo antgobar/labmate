@@ -1,4 +1,7 @@
-async function getMeasurementData(url) {
+async function getMeasurementData(endpoint) {
+    const protocol = window.location.protocol;
+    const host = window.location.host;
+    const url = `${protocol}//${host}/${endpoint}`;
     try {
         const response = await fetch(url);
         if (!response.ok) {
