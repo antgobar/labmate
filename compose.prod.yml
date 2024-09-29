@@ -33,7 +33,6 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - CF_ZONE_API_TOKEN=$CF_ZONE_API_TOKEN
       - CLOUDFLARE_DNS_API_TOKEN=$CLOUDFLARE_DNS_API_TOKEN
       - CLOUDFLARE_EMAIL=$CLOUDFLARE_EMAIL
     volumes:
@@ -54,7 +53,6 @@ services:
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
       - POSTGRES_HOST=db
       - POSTGRES_DB=labmate
-      - ADMIN_PASSWORD=$ADMIN_PASSWORD
     env_file:
       - .env
     depends_on:
