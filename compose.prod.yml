@@ -23,7 +23,8 @@ services:
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
       - "--providers.docker.exposedbydefault=false"
-      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.myresolver.acme.email=labmate@ant0n.uk"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       - "--entryPoints.web.http.redirections.entrypoint.to=websecure"
@@ -41,7 +42,7 @@ services:
     image: ghcr.io/antgobar/labmate:prod
     labels: 
       - "traefik.enable=true"
-      - "traefik.http.routers.labmate.rule=Host(`ant0n.uk`)"
+      - "traefik.http.routers.labmate.rule=Host(`vps.ant0n.uk`)"
       - "traefik.http.routers.labmate.entrypoints=websecure"
       - "traefik.http.routers.labmate.tls.certresolver=myresolver"
     volumes:
