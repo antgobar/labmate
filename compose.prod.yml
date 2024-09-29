@@ -25,7 +25,7 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--certificatesresolvers.myresolver.acme.dnschallenge=true"
       - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
-      - "--certificatesresolvers.myresolver.acme.email=labmate@ant0n.uk"
+      - "--certificatesresolvers.myresolver.acme.email=$CLOUDFLARE_EMAIL"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       - "--entryPoints.web.http.redirections.entrypoint.to=websecure"
       - "--entryPoints.web.http.redirections.entrypoint.scheme=https"
@@ -34,6 +34,8 @@ services:
       - "443:443"
     environment:
       - CF_ZONE_API_TOKEN=$CF_ZONE_API_TOKEN
+      - CLOUDFLARE_DNS_API_TOKEN=$CLOUDFLARE_DNS_API_TOKEN
+      - CLOUDFLARE_EMAIL=$CLOUDFLARE_EMAIL
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - letsencrypt:/letsencrypt
@@ -42,7 +44,7 @@ services:
     image: ghcr.io/antgobar/labmate:prod
     labels: 
       - "traefik.enable=true"
-      - "traefik.http.routers.labmate.rule=Host(`vps.ant0n.uk`)"
+      - "traefik.http.routers.labmate.rule=Host(`$LABMATE_HOST`)"
       - "traefik.http.routers.labmate.entrypoints=websecure"
       - "traefik.http.routers.labmate.tls.certresolver=myresolver"
     volumes:
