@@ -5,6 +5,5 @@ ENV PYTHONUNBUFFERED 1
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY . .
-RUN chmod +x scripts/prod_run.sh
 EXPOSE 8000
 ENTRYPOINT [ "fastapi", "run", "app/main.py" ]
