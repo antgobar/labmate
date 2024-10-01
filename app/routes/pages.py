@@ -49,3 +49,8 @@ def get_pricing_page():
 @router.get("/contact")
 def get_contact_page():
     return RedirectResponse(url="/#contact-section", status_code=301)
+
+
+@router.get("/features")
+def get_features_page():
+    return RedirectResponse(url="/#features-section", status_code=301)

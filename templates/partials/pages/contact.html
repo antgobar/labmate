@@ -3,7 +3,7 @@
     <p>Get in touch with us for more information about our services, arrange a consultation call or provide some
         feedback.
     </p>
-    <form id="contactForm" action="/contact/messages" method="post">
+    <form id="contactForm" hx-post="/contact/messages/">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required>
         <label for="email">Email</label>
@@ -22,6 +22,7 @@
         </div>
         <button type="submit" id="sendMessage">Send Message</button>
     </form>
+    
     <script>
         function initialiseForm() {
             const textField = document.getElementById('message');

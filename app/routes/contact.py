@@ -1,7 +1,7 @@
 from datetime import UTC, datetime
 
 from fastapi import APIRouter, Depends, Request
-from fastapi.responses import RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import ValidationError
 
 from app.services.database import DbSession, get_db
@@ -16,7 +16,7 @@ def contact_form():
     return RedirectResponse("/contact")
 
 
-@router.post("/messages")
+@router.post("/messages/")
 async def contact_form_submission(
     request: Request,
     db: DbSession = Depends(get_db),
@@ -45,4 +45,4 @@ async def contact_form_submission(
     db.add(contact)
     db.commit()
 
-    RedirectResponse("/")
+    return HTMLResponse("<h4>Message sent!</h4> <a href='/contact'>Send another?</a>")
