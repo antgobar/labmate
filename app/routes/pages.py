@@ -12,7 +12,7 @@ router = APIRouter(tags=["pages"])
 def get_index_page(request: Request, user: User = Depends(get_current_user)):
     return templates.TemplateResponse(
         "pages/home.html",
-        {"request": request, "user": user, "other_message": "test 2"},
+        {"request": request, "user": user, "other_message": "test 3"},
     )
 
 

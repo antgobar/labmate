@@ -58,8 +58,6 @@ services:
       - "traefik.http.routers.labmate.entrypoints=websecure"
       - "traefik.http.routers.labmate.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
-    volumes:
-      - .:/code
     environment: 
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
