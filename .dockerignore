@@ -1,0 +1,9 @@
+.venv
+.vscode
+__pycache__
+.ruff_cache
+*.db
+.env
+.DS_Store
+.ssl
+secrets

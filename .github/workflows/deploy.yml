@@ -34,4 +34,3 @@ jobs:
           push: true
           tags: |
             ghcr.io/antgobar/labmate:prod
-            ghcr.io/antgobar/labmate:${{ env.COMMIT_SHORT_SHA }}
