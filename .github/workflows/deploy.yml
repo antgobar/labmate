@@ -22,6 +22,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
-        run: |
-          docker build --pull --no-cache -t ghcr.io/antgobar/labmate:prod .
-          docker push ghcr.io/antgobar/labmate:prod
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          pull: true
+          no-cache: true
+          tags: ghcr.io/antgobar/labmate:prod
