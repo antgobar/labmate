@@ -23,5 +23,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ghcr.io/antgobar/labmate:prod .
+          docker build -t ghcr.io/antgobar/labmate:prod . --no-cache
           docker push ghcr.io/antgobar/labmate:prod
