@@ -26,6 +26,5 @@ jobs:
         with:
           context: .
           push: true
-          pull: true
           no-cache: true
           tags: ghcr.io/antgobar/labmate:prod
