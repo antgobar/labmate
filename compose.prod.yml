@@ -23,6 +23,7 @@ services:
         - "--interval"
         - "30"
         - "--rolling-restart"
+        - "--cleanup"
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
 
