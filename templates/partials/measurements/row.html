@@ -1,11 +1,6 @@
 <tr id="measurement-row-{{ measurement.id }}">
     <td>{{ measurement.id }}</td>
     <td>{{ measurement.name }}</td>
-    <td>
-        {% for variable in measurement.variables %}
-        {{ variable.name }} ({{ variable.unit }}){% if not loop.last %}, {% endif %}
-        {% endfor %}
-    </td>
     <td>{{ measurement.variables | length }}</td>
     <td>{{ measurement.data_points | length }}</td>
     <td>{{ measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
