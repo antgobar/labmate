@@ -1,12 +1,12 @@
-import os
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config, pool
 
 from alembic import context
 from app.services.models import ModelBase
+from app.services.database import construct_database_url
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = construct_database_url()
 
 config = context.config
 config.set_main_option("sqlalchemy.url", DATABASE_URL)
