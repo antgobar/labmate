@@ -23,7 +23,7 @@
     </a>
 </li>
 <li>
-    <a href="/dashboard/" hx-target="main" hx-replace-url="/dashboard/" hx-push-url="true">
+    <a disabled href="#">
         Dashboard
         <span>
             <img src="/static/svg/dashboard.svg" alt="">
@@ -38,15 +38,23 @@
         </span>
     </a>
 </li>
-{% if user.role == "ADMIN" %}
 <li>
-    <a href="/dashboard/" hx-target="main" hx-replace-url="/dashboard/" hx-push-url="true">
-        Account
+    <a href="/user/profile/" hx-target="main" hx-replace-url="/user/profile" hx-push-url="true">
+        Profile
         <span>
             <img src="/static/svg/user.svg" alt="">
         </span>
     </a>
 </li>
+<li>
+    <a href="/user/settings/" hx-target="main" hx-replace-url="/user/settings" hx-push-url="true">
+        Settings
+        <span>
+            <img src="/static/svg/settings.svg" alt="">
+        </span>
+    </a>
+</li>
+{% if user.role == "ADMIN" %}
 <li>
     <a href="/admin/" hx-target="main" hx-replace-url="/admin/" hx-push-url="true">
         Admin

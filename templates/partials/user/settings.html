@@ -1,0 +1,44 @@
+<h2>Settings</h2>
+<article>
+    <header><strong>Developer (Coming soon)</strong></header>
+    <section>
+        <p>Create an API to integrate with your own services. The API key will have the same role access as you.</p>
+        <form action="/user/api_key" method="post">
+            <button disabled type="submit">Create API Key</button>
+        </form>
+    </section>
+
+</article>
+<article>
+    <header><strong>Actions</strong></header>
+    <dialog id="deleta-all-entities">
+        <article>
+            <header>
+                <form method="dialog">
+                    <button aria-label="Close" rel="prev"></button>
+                </form>
+                <strong>This action is irreversible!</strong>
+            </header>
+            <p>
+                <strong class="pico-color-red-500">Warning: Deleting your data is permanent and cannot be
+                    undone.</strong>
+            </p>
+            <p>This includes all archived and un-archived experiments, samples, methods and measurements</p>
+            <p>Press <code>esc</code> or click <code>X</code> to exit</p>
+            <button style="border: none;" class="pico-background-red-500" hx-delete="/user/all_entities"
+                hx-target="main"
+                hx-confirm="Last chance! After you click 'OK' all your data will be deleted. Press esc or click Cancel to exit">
+                Delete all your data
+            </button>
+        </article>
+    </dialog>
+
+    <section>
+        <div>
+            <button style="border: none;" class="pico-background-red-500"
+                onclick="document.getElementById('deleta-all-entities').showModal()">
+                Danger: Delete all your data
+            </button>
+        </div>
+    </section>
+</article>

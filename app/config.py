@@ -22,4 +22,6 @@ PROTECTED_ENDPOINTS = (
     "dashboard",
     "archives",
     "experiments",
+    "profile",
+    "settings",
 )

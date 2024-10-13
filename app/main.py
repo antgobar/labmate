@@ -6,7 +6,7 @@ from app.routes.admin import router as admin
 from app.routes.archives import router as archives
 from app.routes.auth import router as auth
 from app.routes.contact import router as contact
-from app.routes.dashboard import router as dashboard
+from app.routes.user import router as user
 from app.routes.experiments import router as experiments
 from app.routes.measurements import router as measurements
 from app.routes.pages import router as pages
@@ -21,7 +21,7 @@ app = FastAPI()
 
 app.include_router(auth)
 app.include_router(pages)
-app.include_router(dashboard)
+app.include_router(user)
 app.include_router(samples)
 app.include_router(experiments)
 app.include_router(archives)

@@ -19,7 +19,7 @@ def get_index_page(request: Request, user: User = Depends(get_current_user)):
 @router.get("/register")
 def get_register_page(request: Request, user: User = Depends(get_current_user)):
     if user:
-        return RedirectResponse(url="/dashboard/", status_code=303)
+        return RedirectResponse(url="/", status_code=303)
     return templates.TemplateResponse(
         "pages/register.html",
         {"request": request, "user": user},
@@ -29,7 +29,7 @@ def get_register_page(request: Request, user: User = Depends(get_current_user)):
 @router.get("/login")
 def get_login(request: Request, user: User = Depends(get_current_user)):
     if user:
-        return RedirectResponse(url="/dashboard/", status_code=303)
+        return RedirectResponse(url="/", status_code=303)
     return templates.TemplateResponse(
         "pages/login.html",
         {"request": request, "user": user},

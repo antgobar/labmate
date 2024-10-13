@@ -1,0 +1,16 @@
+<h2>Profile</h2>
+<article>
+    <header><strong>Profile</strong></header>
+    <p>Username: {{ user.username }}</p>
+    <p>Account created: {{ user.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+    <p>Role: {{ user.role }}</p>
+    {% if user.storage_usage > 100 %}
+    <p class="pico-color-red-500">
+        Data usage (MB): {{ user.storage_usage }} / 100
+    </p>
+    {% else %}
+    <p>Data usage (MB): {{ user.storage_usage }} / 100</p>
+    {% endif %}
+    <p>Total samples: {{ user.samples|length }}</p>
+    <p>Total experiments: {{ user.experiments|length }}</p>
+</article>

@@ -1,8 +1,8 @@
 {% if request.headers.get('HX-Request') %}
-{% include 'partials/user/dashboard.html' %}
+{% include 'partials/user/profile.html' %}
 {% else %}
 {% extends 'index.html' %}
 {% block content %}
-{% include 'partials/user/dashboard.html' %}
+{% include 'partials/user/profile.html' %}
 {% endblock %}
 {% endif %}

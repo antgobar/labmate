@@ -1,0 +1,8 @@
+{% if request.headers.get('HX-Request') %}
+{% include 'partials/user/settings.html' %}
+{% else %}
+{% extends 'index.html' %}
+{% block content %}
+{% include 'partials/user/settings.html' %}
+{% endblock %}
+{% endif %}

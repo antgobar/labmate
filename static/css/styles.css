@@ -175,3 +175,8 @@ a img {
 #backToTopBtn:hover {
     opacity: 1; 
 }
+
+#explore-links li:hover {
+    background-color: var(--pico-color-azure-850);
+    border-radius: 0.5rem;
+}
