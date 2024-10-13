@@ -7,6 +7,13 @@
     </td>
     <td>{{ experiment.lab_samples | length }}</td>
     <td>
+        {% if experiment.methods %}
+        <progress value="{{ experiment.method_progress_pct()}}" max="1"></progress>
+        {% else %}
+        <button><small>Add methods</small></button>
+        {% endif %}
+    </td>
+    <td>
         <div class="button-container">
             <button hx-get="/experiments/{{ experiment.id }}" hx-target="main"
                 hx-replace-url="/experiments/{{ experiment.id }}" hx-push-url="true">

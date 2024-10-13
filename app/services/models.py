@@ -11,6 +11,7 @@ from sqlalchemy import (
     String,
     Table,
 )
+from sqlalchemy.ext.hybrid import hybrid_method
 from sqlalchemy.orm import relationship
 
 from app.services.database import Base, engine
@@ -62,6 +63,7 @@ class User(Base):
     samples = relationship("LabSample", backref="users")
     experiments = relationship("Experiment", backref="users")
     measurements = relationship("Measurement", backref="users")
+    methods = relationship("Method", backref="users")
     created_at = Column(DateTime)
     updated_at = Column(DateTime, nullable=True)
 
@@ -112,6 +114,16 @@ class Experiment(Base):
     lab_samples = relationship(
         "LabSample", secondary=experiment_samples, back_populates="experiments"
     )
+    methods = relationship("Method", backref="experiments")
+
+    @hybrid_method
+    def method_progress_pct(self):
+        if len(self.methods) == 0:
+            return 0
+
+        return len([method for method in self.methods if method.is_completed]) / len(
+            self.methods
+        )
 
 
 class Measurement(Base):
@@ -126,13 +138,15 @@ class Measurement(Base):
     lab_sample_id = Column(Integer, ForeignKey("lab_samples.id"))
 
 
-# class Method(Base):
-#     __tablename__ = "methods"
-#     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-#     name = Column(String(50))
-#     description = Column(String(200))
-#     step = Column(Integer)
-#     experiment_id = Column(Integer, ForeignKey("experiments.id"))
+class Method(Base):
+    __tablename__ = "methods"
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    name = Column(String(50))
+    description = Column(String(200))
+    step_no = Column(Integer)
+    is_completed = Column(Boolean, default=False)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    experiment_id = Column(Integer, ForeignKey("experiments.id"))
 
 
 class ContactResponse(Base):

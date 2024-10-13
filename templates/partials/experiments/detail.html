@@ -33,6 +33,23 @@
             <p>{{ experiment.description }}</p>
         </article>
     </div>
+    <div>
+        <h4>Methods</h4>
+        {% if experiment.methods %}
+        <div class="grid">
+            {% for method in experiment.methods %}
+            <article>
+                <details>
+                    <summary><strong>{{ method.name }}</strong></summary>
+                    {{ method.description }}
+                </details>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No methods provided <button>Add method</button></p>
+        {% endif %}
+    </div>
     <h4>Linked lab samples</h4>
     {% if experiment.lab_samples | length > 0 %}
     {% with %}
