@@ -36,16 +36,14 @@
     <div>
         <h4>Methods</h4>
         {% if experiment.methods %}
-        <div class="grid">
-            {% for method in experiment.methods %}
-            <article>
-                <details>
-                    <summary><strong>{{ method.name }}</strong></summary>
-                    {{ method.description }}
-                </details>
-            </article>
-            {% endfor %}
-        </div>
+        {% for method in experiment.methods %}
+        <article>
+            <details>
+                <summary><strong>{{ loop.index }}. {{ method.name }}</strong></summary>
+                {{ method.description }}
+            </details>
+        </article>
+        {% endfor %}
         {% else %}
         <p>No methods provided <button>Add method</button></p>
         {% endif %}
