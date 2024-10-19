@@ -11,8 +11,8 @@
             <input id="name" type="text" name="name" value="{{ experiment.name }}" required>
             <label for="description">Experiment Description</label>
             <textarea id="description" type="text" name="description" required>{{ experiment.description }}</textarea>
-            <input type="submit" hx-put="/experiments/{{ experiment.id }}/" hx-target="main"
-                value="Update" style="border: none;" class="pico-background-green-500">
+            <input type="submit" hx-put="/experiments/{{ experiment.id }}/" hx-target="main" value="Update"
+                class="btn-success">
         </form>
     </article>
 </dialog>

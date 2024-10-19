@@ -39,6 +39,4 @@ def delete_all_archives(
     db: DbSession = Depends(get_db), user: User = Depends(get_current_user)
 ):
     delete_all_user_archives(db, user)
-    return HTMLResponse(
-        """<button style="border: none;" class="pico-background-green-500">Deleted</button>"""
-    )
+    return HTMLResponse("""<button class="btn-success">Deleted</button>""")

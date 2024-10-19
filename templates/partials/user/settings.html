@@ -7,9 +7,9 @@
             <button disabled type="submit">Create API Key</button>
         </form>
     </section>
-
 </article>
 <article>
+
     <header><strong>Actions</strong></header>
     <dialog id="deleta-all-entities">
         <article>
@@ -25,8 +25,7 @@
             </p>
             <p>This includes all archived and un-archived experiments, samples, methods and measurements</p>
             <p>Press <code>esc</code> or click <code>X</code> to exit</p>
-            <button style="border: none;" class="pico-background-red-500" hx-delete="/user/all_entities"
-                hx-target="main"
+            <button class="btn-danger" hx-delete="/user/data/all/" hx-target="main"
                 hx-confirm="Last chance! After you click 'OK' all your data will be deleted. Press esc or click Cancel to exit">
                 Delete all your data
             </button>
@@ -35,7 +34,7 @@
 
     <section>
         <div>
-            <button style="border: none;" class="pico-background-red-500"
+            <button class="btn-danger"
                 onclick="document.getElementById('deleta-all-entities').showModal()">
                 Danger: Delete all your data
             </button>

@@ -44,7 +44,7 @@ def get_user_settings(
     )
 
 
-@router.delete("/all_entities/")
+@router.delete("/data/all/")
 def delete_all_entities(
     db: DbSession = Depends(get_db),
     user: User = Depends(get_current_user),

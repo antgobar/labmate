@@ -27,3 +27,10 @@ alembic upgrade head
 - [LabKey](https://www.labkey.com/)
 - [LabVantage](https://www.labvantage.com/)
 - [LabWare](https://www.labware.com/)
+
+## To Do
+
+- [ ] Render experiment methods
+- [ ] Generated API key is JWT, encodes user id
+- [ ] User can generate, regenerate and delete API key
+- [ ] Create API in Go, using API key for auth

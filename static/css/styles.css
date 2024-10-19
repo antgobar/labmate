@@ -180,3 +180,24 @@ a img {
     background-color: var(--pico-color-azure-850);
     border-radius: 0.5rem;
 }
+
+.btn-danger {
+    background-color: var(--pico-color-red-500);
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: var(--pico-color-red-400);
+    color: var(--pico-color-red-800);
+}
+
+.btn-success {
+    background-color: var(--pico-color-green-500) !important;
+    border: none !important;
+}
+
+.btn-success:hover {
+    background-color: var(--pico-color-green-400) !important;
+    /* text  */
+    color: var(--pico-color-green-800) !important;
+}

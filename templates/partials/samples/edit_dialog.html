@@ -11,8 +11,7 @@
             <input id="format" type="text" name="format" value="{{ sample.format }}" required>
             <input id="label" type="text" name="label" value="{{ sample.label }}" required>
             <input id="family" type="text" name="family" value="{{ sample.family }}" required>
-            <input type="submit" hx-put="/samples/{{ sample.id }}/" hx-target="main" value="Update"
-                style="border: none;" class="pico-background-green-500">
+            <input type="submit" hx-put="/samples/{{ sample.id }}/" hx-target="main" value="Update" class="btn-success">
         </form>
     </article>
 </dialog>
