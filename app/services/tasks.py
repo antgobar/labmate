@@ -3,12 +3,12 @@ import os
 from datetime import UTC, datetime
 
 from app.config import ADMIN_USERNAME
+from app.routes.samples import create_user_sample
 from app.services import schemas
-from app.services.crud import (
+from app.services.crud.experiments import (
     create_user_experiment,
-    create_user_sample,
-    get_user_by_username,
 )
+from app.services.crud.user import get_user_by_username
 from app.services.database import DbSession, SessionLocal
 from app.services.models import User, UserRole
 from app.services.security import hash_password

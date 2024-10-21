@@ -2,21 +2,25 @@ from fastapi import APIRouter, Depends, Form, Request, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
 
 from app.services import schemas
-from app.services.crud import (
+from app.services.crud.auth import get_current_user
+from app.services.crud.experiments import (
     archive_user_experiment_by_id,
     create_user_experiment,
     delete_user_experiment_by_id,
     edit_user_experiment_by_id,
-    get_current_user,
     get_user_archived_experiments,
     get_user_experiment_by_id,
     get_user_experiments,
-    get_user_samples_by_family,
-    link_sample_and_experiment,
-    search_unique_lab_sample_families,
     search_user_experiments,
     unarchive_user_experiment_by_id,
+)
+from app.services.crud.linked_entities import (
+    link_sample_and_experiment,
     unlink_sample_and_experiment,
+)
+from app.services.crud.samples import (
+    get_user_samples_by_family,
+    search_unique_lab_sample_families,
 )
 from app.services.database import DbSession, get_db
 from app.services.models import User

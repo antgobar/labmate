@@ -1,16 +1,18 @@
+from datetime import UTC, datetime
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, File, Form, Request, Response, UploadFile
 from fastapi.responses import HTMLResponse, RedirectResponse
 
 from app.services import schemas
-from app.services.crud import (
+from app.services.crud.auth import get_current_user
+from app.services.crud.linked_entities import (
     add_measurements_to_user_sample,
+)
+from app.services.crud.samples import (
     archive_user_sample_by_id,
-    create_user_sample,
     delete_user_sample_by_id,
     edit_user_sample_by_id,
-    get_current_user,
     get_user_archived_samples,
     get_user_sample_by_id,
     get_user_samples,
@@ -73,6 +75,25 @@ async def get_sample_by_id(
             "linkable": True,
         },
     )
+
+
+def create_user_sample(
+    db: DbSession,
+    user: User,
+    sample_data: schemas.LabSample,
+) -> LabSample:
+    now = datetime.now(tz=UTC)
+    sample = LabSample(
+        user_id=user.id,
+        created_at=now,
+        updated_at=now,
+        **sample_data.model_dump(),
+    )
+
+    db.add(sample)
+    db.commit()
+    db.refresh(sample)
+    return sample
 
 
 @router.post("/")

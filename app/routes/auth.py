@@ -5,17 +5,19 @@ from fastapi import APIRouter, BackgroundTasks, Depends, Form, Request, Response
 from fastapi.responses import RedirectResponse
 
 from app.config import COOKIE_KEY, MAX_COOKIE_AGE, RESERVED_USERNAMES
-from app.services.crud import (
+from app.services.crud.auth import (
     get_current_user,
-    get_user_by_username,
     login_user,
     logout_user,
     register_user_if_not_registered,
 )
+from app.services.crud.user import (
+    get_user_by_username,
+)
 from app.services.database import DbSession, get_db
-from app.services.tasks import populate_demo_data_on_registration
 from app.services.models import User
 from app.services.resources import templates
+from app.services.tasks import populate_demo_data_on_registration
 
 router = APIRouter(tags=["auth"])
 

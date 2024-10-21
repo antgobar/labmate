@@ -5,7 +5,7 @@
     <p>Account created: {{ user.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
     <p>Role: {{ user.role }}</p>
     {% if user.storage_usage > 100 %}
-    <p class="pico-color-red-500">
+    <p class="btn-danger">
         Data usage (MB): {{ user.storage_usage }} / 100
     </p>
     {% else %}

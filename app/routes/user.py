@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 
-from app.services.crud import (
+from app.services.crud.auth import get_current_user
+from app.services.crud.user import (
     calculate_storage_size_for_user,
     delete_all_user_entities,
-    get_current_user,
 )
 from app.services.database import DbSession, get_db
 from app.services.models import User

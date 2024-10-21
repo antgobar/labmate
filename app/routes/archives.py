@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 
-from app.services.crud import (
+from app.services.crud.auth import get_current_user
+from app.services.crud.user import (
     delete_all_user_archives,
-    get_current_user,
     get_user_archived_entity_summary,
 )
 from app.services.database import DbSession, get_db

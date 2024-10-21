@@ -5,7 +5,7 @@ from fastapi.responses import RedirectResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from app.config import PROTECTED_ENDPOINTS
-from app.services.crud import get_current_user
+from app.services.crud.auth import get_current_user
 from app.services.database import get_db
 from app.services.models import UserRole
 

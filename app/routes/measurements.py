@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, File, Form, Request, Response, UploadFile
 from fastapi.responses import HTMLResponse
 
-from app.services.crud import (
+from app.services.crud.auth import get_current_user
+from app.services.crud.measurements import (
     create_user_measurement,
     delete_user_measurement,
     edit_user_measurement_by_id,
-    get_current_user,
     get_user_measurement_by_id,
     get_user_measurements,
     search_user_measurements,

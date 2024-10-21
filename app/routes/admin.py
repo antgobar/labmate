@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 
-from app.services.crud import (
+from app.services.crud.auth import get_current_user
+from app.services.crud.user import (
     calculate_storage_size_for_user,
-    get_current_user,
     search_user,
 )
 from app.services.database import DbSession, get_db

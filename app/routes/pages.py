@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 
-from app.services.crud import get_current_user
+from app.services.crud.auth import get_current_user
 from app.services.models import User
 from app.services.resources import templates
 
