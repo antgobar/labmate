@@ -1,0 +1,30 @@
+{% include 'partials/user/delete_api_key_action.html' %}
+<dialog open id="generatedApiKeyDialog">
+    <article>
+        <header>
+            <form method="dialog">
+                <button onclick="deleteDialog()" aria-label="Close" rel="prev"></button>
+            </form>
+            <strong>Your API key. Copy it now as it won't be shown again.</strong>
+        </header>
+        <div>
+            <textarea id="generatedApiKeyText" readonly>{{ generated_api_token }}</textarea>
+            <button type="button" onclick="copyApiKey()">Copy</button>
+        </div>
+    </article>
+</dialog>
+<script>
+    function copyApiKey() {
+        const apiKeyTextArea = document.getElementById('generatedApiKeyText');
+        apiKeyTextArea.select();
+        document.execCommand('copy');
+        alert('API Key copied to clipboard!');
+    }
+
+    function deleteDialog() {
+        const dialog = document.getElementById('generatedApiKeyDialog');
+        dialog.close();
+        dialog.remove();
+    }
+
+</script>

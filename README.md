@@ -4,15 +4,6 @@
 
 LabMate is a web application that helps researchers manage their research projects, experiments, and data.
 
-## Useful commands
-
-### Database migrations using alembic
-
-```bash
-alembic revision --autogenerate -m "migration message"
-alembic upgrade head
-```
-
 ## Existing solutions
 
 - [Labguru](https://www.labguru.com/)

@@ -58,6 +58,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True, unique=True)
     username = Column(String, index=True, unique=True)
     hashed_password = Column(String(200))
+    hashed_api_key = Column(String(200))
     active = Column(Boolean, default=True)
     role = Column(String(50), default=UserRole.RESEARCHER.name, nullable=False)
     samples = relationship("LabSample", backref="users")

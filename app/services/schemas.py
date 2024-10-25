@@ -44,3 +44,9 @@ class ContactForm(BaseModel):
     name: str
     email: EmailStr
     message: str
+
+
+class AuthTokenPayload(BaseModel):
+    user_id: int
+    username: str
+    token: str
