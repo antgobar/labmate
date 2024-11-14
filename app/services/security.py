@@ -4,12 +4,14 @@ import secrets
 import bcrypt
 import jwt
 from argon2 import PasswordHasher
-from argon2.exceptions import VerifyMismatchError, InvalidHashError
+from argon2.exceptions import InvalidHashError, VerifyMismatchError
 
 from app.services.schemas import AuthTokenPayload
 
 _PASSWORD_LENGTH = 20
 _JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+if not _JWT_SECRET_KEY:
+    raise Exception("JWT_SECRET_KEY environment variable is not set")
 
 
 def hash_password(password: str):
