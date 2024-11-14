@@ -10,7 +10,6 @@ from app.services.schemas import AuthTokenPayload
 from app.services.security import (
     generate_auth_token,
     generate_random_password,
-    hash_password,
     hash_password_bcrypted,
     verify_password,
     verify_password_bcrypted,

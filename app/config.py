@@ -16,13 +16,4 @@ RESERVED_USERNAMES = (
     "archives",
     "measurements",
 )
-PROTECTED_ENDPOINTS = (
-    "samples",
-    "measurements",
-    "dashboard",
-    "archives",
-    "experiments",
-    "profile",
-    "settings",
-    "user"
-)
+PUBLIC_ENDPOINTS = ("", "register", "login", "logout")
