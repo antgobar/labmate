@@ -24,4 +24,5 @@ PROTECTED_ENDPOINTS = (
     "experiments",
     "profile",
     "settings",
+    "user"
 )
