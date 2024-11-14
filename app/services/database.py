@@ -3,11 +3,9 @@ import os
 from sqlalchemy import create_engine, pool
 from sqlalchemy.orm import Session, declarative_base, sessionmaker
 
-from app.config import DATABASE_URL_KEY
-
 
 def construct_database_url():
-    database_url = os.getenv(DATABASE_URL_KEY)
+    database_url = os.getenv("DATABASE_URL")
     if database_url:
         return database_url
 
