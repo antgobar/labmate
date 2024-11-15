@@ -14,4 +14,4 @@ RESERVED_USERNAMES = (
     "archives",
     "measurements",
 )
-PUBLIC_ENDPOINTS = ("", "register", "login", "logout")
+PUBLIC_ENDPOINTS = ("", "register", "login", "logout", "static")
